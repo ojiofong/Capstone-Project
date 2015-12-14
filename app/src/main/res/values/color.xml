@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- My NavDrawer colors -->
+    <color name="list_item_title">#fff</color>
+    <color name="list_background">#303030</color>
+    <color name="list_background_pressed">#992416</color>
+    <color name="list_divider">#272727</color>
+    <color name="counter_text_bg">#626262</color>
+    <color name="counter_text_color">#c5c4c4</color>
+
+    <!-- Material colors -->
+
+    <color name="colorPrimary">#03a9f4</color>
+    <color name="colorPrimaryDark">#0288d1</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary_temp">#3f51b5</color>
+    <color name="colorPrimaryDark_temp">#263238</color>
+
+    <!-- Floating action button colors -->
+
+    <color name="primary">#3f51b5</color>
+    <color name="primary_pressed">#303f9f</color>
+    <color name="ripple">#ff80ab</color>
+    <color name="accent">#ff4081</color>
+    <color name="accent_pressed">#f50057</color>
+
+    <!-- Other colors -->
+
+    <color name="transparent">#00000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="fuchsia">#FF00FF</color>
+    <color name="red">#FF0000</color>
+    <color name="silver">#C0C0C0</color>
+    <color name="gray">#808080</color>
+    <color name="olive">#808000</color>
+    <color name="purple">#800080</color>
+    <color name="maroon">#800000</color>
+    <color name="aqua">#00FFFF</color>
+    <color name="lime">#00FF00</color>
+    <color name="teal">#008080</color>
+    <color name="green">#008000</color>
+    <color name="blue">#0000FF</color>
+    <color name="navy">#000080</color>
+    <color name="black">#000000</color>
+    <color name="mblue">#C5EEFA</color>
+    <color name="blue_single">#071754</color>
+    <color name="blue_singleborder_a">#b3e5fc</color>
+    <color name="blue_singleborder_a_backup">#ABC7D9</color>
+    <color name="blue_singleborder_b">#CCD9E0</color>
+    <color name="blue_singleborder_c">#DAE7F0</color>
+     <color name="background_basic">#fff3f3f3</color>
+
+    <drawable name="pressed_color_aqua">#00FFFF</drawable> <!-- custom color for pressed state -->
+    <drawable name="pressed_color_gray">#808080</drawable> <!-- custom color for pressed state -->
+    <drawable name="normal_color_transparent">#00FFFFFF</drawable> <!-- transperent color for normal state -->
+
+</resources>

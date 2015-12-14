@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- DEFAULT -->
+
+    <string name="app_name">City Explorer</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_mapview">Map View</string>
+    <string name="action_search">Search</string>
+    <string name="action_share">Share</string>
+    <string name="toggleView">Switch View</string>
+    <string name="no_data_found">Opps! No data found\n\nUse the Search Icon on the Home Screen menu\nfor unfiltered search results</string>
+    <string name="content">image</string>
+    <string name="contact_details">Contact Details</string>
+    <string name="phone">Phone</string>
+    <string name="text_here">Text Here</string>
+    <string name="number_here">4.0</string>
+    <string name="opening_hours">Opening Hours</string>
+    <string name="reviews">Reviews</string>
+    <string name="click_here">CLICK HERE</string>
+    <string name="more_reviews">More Reviews</string>
+    <string name="fetching_details">Fetching Details&#8230;</string>
+    <string name="load_more">Load More</string>
+    <string name="change_location">Change Location</string>
+    <string name="delete_history">Delete History</string>
+    <string name="delete_history_message">History will be deleted</string>
+    <string name="normal_map">Normal\nMap</string>
+    <string name="hybrid_map">Hybrid\nMap</string>
+    <string name="sattelite_map">Satellite\nMap</string>
+    <string name="terrain_map">Terrain\nMap</string>
+    <string name="airports">Airports</string>
+    <string name="atm">ATM</string>
+    <string name="attractions">Attractions</string>
+    <string name="banks">Banks</string>
+    <string name="barber_haircare">Barber/Hair Care</string>
+    <string name="bars">Bars</string>
+    <string name="beauty_salon">Beauty Salon</string>
+    <string name="bus_station">Bus Station</string>
+    <string name="car_rental">Car Rental</string>
+    <string name="car_repair">Car Repair</string>
+    <string name="car_wash">Car Wash</string>
+    <string name="coffee_shops">Coffee Shops</string>
+    <string name="church">Church</string>
+    <string name="gas_stations">Gas Stations</string>
+    <string name="grocery">Grocery</string>
+    <string name="gym_fitness">Gym/Fitness</string>
+    <string name="hindu_temple">Hindu Temple</string>
+    <string name="hospitals">Hospitals</string>
+    <string name="hotels">Hotels</string>
+    <string name="mosque">Mosque</string>
+    <string name="movie_theaters">Movie Theaters</string>
+    <string name="parking">Parking</string>
+    <string name="pharmacy">Pharmacy</string>
+    <string name="post_office">Post Office</string>
+    <string name="restaurants">Restaurants</string>
+    <string name="shopping_malls">Shopping Malls</string>
+    <string name="supermarkets">Supermarkets</string>
+    <string name="synagogue">Synagogue</string>
+    <string name="train_subway">Train/Subway</string>
+    <string name="internet_error_title">Internet Connection Error</string>
+    <string name="internet_error_message">Please connect to working Internet connection</string>
+    <string name="unable_to_resolve_connection">Unable to resolve connection error</string>
+    <string name="back_again">Press again to exit</string>
+    <string name="no_more_data">No more data found</string>
+    <string name="select_location">Please select a Location</string>
+    <string name="current_location">Current Location</string>
+    <string name="changed_location">Changed Location</string>
+    <string name="get_direction_from">Get Direction From</string>
+    <string name="cancel">Cancel</string>
+    <string name="okay">Okay</string>
+    <string name="delete">Delete</string>
+    <string name="leave_gps_off">Leave GPS off</string>
+    <string name="new_location_updated">New Location Updated</string>
+    <string name="now_using_current_location">Now Using Current Location</string>
+    <string name="use_current_location">Use Current Location</string>
+    <string name="enter_few_letters">Enter a few letters &amp; search</string>
+    <string name="history_deleted">History Deleted</string>
+    <string name="km">km</string>
+    <string name="mi">mi</string>
+    <string name="further_details_unavailable">Further Details Unavailable</string>
+    <string name="name">Name</string>
+    <string name="address">Address</string>
+    <string name="website">Website</string>
+    <string name="url">URL</string>
+    <string name="shared_from">Shared from</string>
+    <string name="distance_unit">Distance Unit</string>
+    <string name="tap_to_select_km_mi">Tap to select Kilometers or Miles</string>
+    <string name="open_source_attribution">Open Source Attribution</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="help_improve_this_app">Help to improve this app by rating or reviewing it</string>
+    <string name="rate_this_app">Rate this App!</string>
+    <string name="version">Version</string>
+    <string name="copyright">COPYRIGHT</string>
+    <string name="settings">SETTINGS</string>
+    <string name="about">ABOUT</string>
+    <string name="street_view">Street View</string>
+    <string name="street_view_is_not_available">Street View is not available in all locations</string>
+    <string name="sunday">Sunday</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Saturday</string>
+    <string name="closed">Closed</string>
+    <string name="pet_store">Pet Store</string>
+    <string name="gps_location_settings">GPS/Location Settings</string>
+    <string name="enable_google_location">Location services must be enabled for this App to work properly. Please navigate to Location Settings</string>
+    <string name="enable_gps_message">If GPS is not enabled, this App may not work properly on some devices. Enabling GPS may result in higher accuracy but higher battery usage. Almost every device works fine with just Wireless Networks or Google location services enabled, hence you may ignore this warning, otherwise navigate to Location Settings</string>
+    <string name="enable_gps_optional">Enable GPS (Optional)</string>
+    <string name="location_settings">Location Settings</string>
+    <string name="remind_me">Remind me later</string>
+    <string name="do_not_remind_me">Do not Remind me</string>
+    <string name="good_to_know">Good to know</string>
+    <string name="alert_turned_off">Alert has been turned off. To re-enable alerts go to: Arounda Settings - GPS/Location Alerts</string>
+    <string name="enable_or_disable_alerts">Enable or Disable Alerts</string>
+    <string name="gps_location_alerts">GPS/Location Alerts</string>
+    <string name="rate_app_message">This app is free and will always be. Please show your support and leave a nice rating today. Thank you</string>
+    <string name="unfiltered_search_result">Unfiltered search result</string>
+    
+    
+    <string name="sortby">Sort by</string>
+    <string name="distance">Distance</string>
+    <string name="rating">Rating</string>
+    <string name="price">Price</string>
+    <string name="deals">Deal</string>
+    <string name="all">All</string>
+    <string name="category">Category</string>
+    <string name="redemption_locations">Redemption Locations</string>
+    <string name="automotive">Automotive</string>
+    <string name="beauty_and_spas">Beauty and Spas</string>
+    <string name="food_and_drink">Food and Drinks</string>
+    <string name="health_and_fitness">Health and Fitness</string>
+    <string name="local_services">Local Services</string>
+    <string name="shopping">Shopping</string>
+    <string name="things_to_do">Things to do</string>
+    
+    
+
+    <!-- DEFAULT -->
+
+</resources>

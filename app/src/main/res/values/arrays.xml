@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="selectUnit">
+        <item name="km">Kilometers</item>
+        <item name="mi">Miles</item>
+    </string-array>
+    <string-array name="selectUnitValues">
+        <item name="km">kmValue</item>
+        <item name="mi">milesValue</item>
+    </string-array>
+    <string-array name="ONOFFSelect">
+        <item name="ON">ON</item>
+        <item name="OFF">OFF</item>
+    </string-array>
+    <string-array name="ONOFFValues">
+        <item name="ON">ON</item>
+        <item name="OFF">OFF</item>
+    </string-array>
+    <string-array name="action_list">
+        <item>Sort by</item>
+        <item>Distance</item>
+        <item>Name</item>
+        <item>Rating</item>
+    </string-array>
+
+</resources>

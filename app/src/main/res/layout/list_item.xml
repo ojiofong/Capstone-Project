@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingRight="15dip"
+    android:paddingLeft="15dip"
+    android:paddingBottom="5dip"
+    android:paddingTop="5dip" >
+
+    <!-- Place Name -->
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:text="@string/text_here"
+        android:layout_marginRight="75dp"
+        android:layout_marginEnd="75dp"
+        android:textColor="@color/blue_single"
+        android:textSize="17sp" />
+
+    <!-- Place Address -->
+
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="75dp"
+        android:layout_marginEnd="75dp"
+        android:layout_below="@id/name"
+        android:layout_marginTop="1dip"
+        android:text="@string/text_here"
+        android:textSize="14sp" />
+
+    <!-- Place rating -->
+
+
+    <!-- Distance -->
+
+    <TextView
+        android:id="@+id/distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@id/name"
+        android:layout_marginTop="3dp"
+        android:gravity="end"
+        android:text="@string/number_here"
+        android:textColor="#585858"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+
+    <!-- direction btn -->
+
+    <RatingBar
+        android:id="@+id/place_ratingbar"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/address"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:rating="1"
+        android:stepSize="0.1" />
+
+    <ImageView
+        android:id="@+id/direction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/distance"
+        android:paddingTop="4dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:contentDescription="@string/content"
+        android:src="@drawable/direction_btn" />
+    
+
+</RelativeLayout>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <!-- Include statusBar here for Kitkat only here -->
+
+    <include layout="@layout/statusbar" />
+
+    <!-- Include ToolBar here -->
+
+    <include layout="@layout/toolbar" />
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            style="@style/max_layout_width_style"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical">
+
+
+            <include layout="@layout/card_top_view"/>
+            <include layout="@layout/card_contact_details"/>
+            <include layout="@layout/card_opening_hours"/>
+            <include layout="@layout/card_reviews"/>
+
+
+            <TextView
+                android:id="@+id/statusSingle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/contactDetails1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp"
+                android:paddingBottom="7dip"
+                android:paddingLeft="25dip"
+                android:paddingRight="25dip"
+                android:paddingTop="7dip"
+                android:text="@string/fetching_details"
+                android:textColor="#ccc"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:typeface="sans" />
+
+            <ImageView
+                android:id="@+id/powered_by_google_singleact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="27dp"
+                android:clickable="false"
+                android:contentDescription="@string/content"
+                android:src="@drawable/powered_by_google_light" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

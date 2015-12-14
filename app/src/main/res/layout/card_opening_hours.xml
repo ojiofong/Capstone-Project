@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:id="@+id/card_opening_hours"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="@dimen/key_line_1"
+        android:layout_marginRight="@dimen/key_line_1"
+        android:layout_marginTop="@dimen/card_margin_top"
+        android:clickable="true"
+        android:elevation="@dimen/cardview_default_elevation"
+        android:focusable="true"
+        android:foreground="?selectableItemBackground">
+
+
+        <RelativeLayout
+            android:layout_marginBottom="@dimen/card_margin_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/openingHours1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="5dp"
+                android:background="@color/blue_singleborder_a"
+                android:paddingBottom="5dp"
+                android:paddingStart="15dp"
+                android:paddingEnd="0dp"
+                android:paddingTop="5dp"
+                android:text="@string/opening_hours" />
+
+            <TextView
+                android:id="@+id/sunday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/openingHours1"
+                android:gravity="center"
+                android:text="@string/text_here"
+                android:textColor="#071754"
+                android:textSize="16.7sp"
+                android:typeface="monospace" />
+
+            <TextView
+                android:id="@+id/monday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sunday"
+                android:gravity="center"
+                android:text="@string/text_here"
+                android:textColor="#071754"
+                android:textSize="16.7sp"
+                android:typeface="monospace" />
+
+            <TextView
+                android:id="@+id/tuesday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/monday"
+                android:gravity="center"
+                android:text="@string/text_here"
+                android:textColor="#071754"
+                android:textSize="16.7sp"
+                android:typeface="monospace" />
+
+            <TextView
+                android:id="@+id/wednesday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tuesday"
+                android:gravity="center"
+                android:text="@string/text_here"
+                android:textColor="#071754"
+                android:textSize="16.7sp"
+                android:typeface="monospace" />
+
+            <TextView
+                android:id="@+id/thursday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/wednesday"
+                android:gravity="center"
+                android:text="@string/text_here"
+                android:textColor="#071754"
+                android:textSize="16.7sp"
+                android:typeface="monospace" />
+
+            <TextView
+                android:id="@+id/friday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/thursday"
+                android:gravity="center"
+                android:text="@string/text_here"
+                android:textColor="#071754"
+                android:textSize="16.7sp"
+                android:typeface="monospace" />
+
+            <TextView
+                android:id="@+id/saturday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/friday"
+                android:layout_marginBottom="5dp"
+                android:gravity="center"
+                android:text="@string/text_here"
+                android:textColor="#071754"
+                android:textSize="16.7sp"
+                android:typeface="monospace" />
+
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>

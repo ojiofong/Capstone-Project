@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!-- FrameLayout is required for CardView to work witn ListView -->
+
+    <android.support.v7.widget.CardView
+        style="@style/max_layout_width_style"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/card_item"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="@dimen/key_line_1"
+        android:layout_marginRight="@dimen/key_line_1"
+        android:layout_marginTop="@dimen/card_margin_top"
+        android:clickable="true"
+        android:elevation="@dimen/cardview_default_elevation"
+        android:focusable="true"
+        android:foreground="?selectableItemBackground"
+        android:paddingLeft="15dip"
+        android:paddingRight="15dip">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dip"
+            android:paddingLeft="15dip"
+            android:paddingRight="15dip"
+            android:paddingTop="5dip">
+
+            <!-- Place Name -->
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginEnd="75dp"
+                android:text="@string/text_here"
+                android:textColor="@color/blue_single"
+                android:textSize="17sp" />
+
+            <!-- Place Address -->
+
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/name"
+                android:layout_marginEnd="75dp"
+                android:layout_marginTop="1dip"
+                android:text="@string/text_here"
+                android:textSize="14sp" />
+
+            <!-- Place rating -->
+
+
+            <!-- Distance -->
+
+            <TextView
+                android:id="@+id/distance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignTop="@id/name"
+                android:layout_marginTop="3dp"
+                android:gravity="end"
+                android:text="@string/number_here"
+                android:textColor="#585858"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+
+            <!-- direction btn -->
+
+            <RatingBar
+                android:id="@+id/place_ratingbar"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/rating"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/address"
+                android:isIndicator="true"
+                android:numStars="5"
+                android:rating="1"
+                android:stepSize="0.1" />
+
+            <ImageView
+                android:id="@+id/direction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/distance"
+                android:contentDescription="@string/content"
+                android:paddingTop="4dp"
+                android:src="@drawable/direction_btn" />
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+</FrameLayout>

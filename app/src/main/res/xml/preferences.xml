@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory
+        android:key="first_category"
+        android:title="@string/settings" >
+
+        <ListPreference
+            android:defaultValue="milesValue"
+            android:entries="@array/selectUnit"
+            android:entryValues="@array/selectUnitValues"
+            android:key="distanceUnit"
+            android:summary="@string/tap_to_select_km_mi"
+            android:title="@string/distance_unit" />
+
+
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:key="second_category"
+        android:title="@string/copyright" >
+        <Preference
+            android:key="open_source"
+            android:title="@string/open_source_attribution" />
+
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/about" >
+        <Preference
+            android:key="version"
+            android:summary="@string/app_name"
+            android:title="@string/version" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

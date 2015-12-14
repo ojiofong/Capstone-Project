@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" >
+
+    <item
+        android:id="@id/action_mapview"
+        android:icon="@drawable/ic_action_map"
+        android:orderInCategory="100"
+        android:title="@string/action_mapview"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/action_dealCategory"
+        android:icon="@drawable/ic_action_collections_list"
+        android:orderInCategory="90"
+        app:showAsAction="ifRoom"
+        android:title="@string/category"
+        android:visible="false"/>
+
+</menu>

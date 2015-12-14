@@ -1,0 +1,22 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+    
+    <!-- Include statusBar here for Kitkat only here -->
+
+    <include layout="@layout/statusbar" />
+
+    <!-- Include ToolBar here -->
+
+    <include layout="@layout/toolbar" />
+
+    <ListView
+        android:id="@+id/listViewSingleNext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp" >
+    </ListView>
+
+</LinearLayout>

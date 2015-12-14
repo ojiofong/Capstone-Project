@@ -1,0 +1,22 @@
+<!-- This can go anywhere in your layout. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <!-- Include statusBar here for Kitkat only here -->
+
+    <include layout="@layout/statusbar" />
+
+    <!-- Include ToolBar here -->
+
+    <include layout="@layout/toolbar" />
+
+    <fragment
+        android:id="@+id/streetviewpanorama"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        class="com.google.android.gms.maps.SupportStreetViewPanoramaFragment" />
+
+</LinearLayout>
