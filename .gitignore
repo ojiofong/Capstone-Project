@@ -1,6 +1,7 @@
+# Created by .ignore support plugin (hsz.mobi)
 ### Android template
 # Built application files
-*.apk
+#*.apk
 *.ap_
 
 # Files for the Dalvik VM
@@ -16,6 +17,7 @@ gen/
 # Gradle files
 .gradle/
 build/
+/*/build/
 
 # Local configuration file (sdk path, etc)
 local.properties
@@ -26,8 +28,11 @@ proguard/
 # Log Files
 *.log
 
-# Android Studio Navigation editor temp files
-.navigation/
+# Custom defined files to ignore
+/cache.xml
+/workspace.xml
+/gradle_project_sync_data.bin
 
-
-# Created by .ignore support plugin (hsz.mobi)
+*.iml
+/.idea/libraries
+/.idea
