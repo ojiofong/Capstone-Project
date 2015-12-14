@@ -11,16 +11,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:id="@+id/card_item"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="@dimen/card_margin_top"
         android:layout_marginLeft="@dimen/key_line_1"
         android:layout_marginRight="@dimen/key_line_1"
-        android:layout_marginTop="@dimen/card_margin_top"
         android:clickable="true"
         android:elevation="@dimen/cardview_default_elevation"
         android:focusable="true"
-        android:foreground="?selectableItemBackground"
-        android:paddingLeft="15dip"
-        android:paddingRight="15dip">
+        android:foreground="?selectableItemBackground">
 
         <RelativeLayout
             android:layout_width="match_parent"

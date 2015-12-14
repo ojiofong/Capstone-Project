@@ -1,6 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayoutNext"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -61,9 +60,6 @@
         android:layout_height="wrap_content"
         android:cacheColorHint="#00000000"
         android:divider="@color/transparent"
-        android:layout_marginRight="@dimen/key_line_1"
-        android:layout_marginLeft="@dimen/key_line_1"
-        android:maxWidth="@dimen/max_width_layout"
         android:dividerHeight="0.05dp"
         android:paddingBottom="10dp"
         android:paddingTop="10dp" />
