@@ -22,10 +22,10 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="5dip"
-            android:paddingLeft="15dip"
-            android:paddingRight="15dip"
-            android:paddingTop="5dip">
+            android:paddingBottom="@dimen/view_spacing"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/view_spacing">
 
             <!-- Place Name -->
 
@@ -34,10 +34,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:layout_marginEnd="75dp"
+                android:layout_marginEnd="@dimen/view_end_margin"
                 android:text="@string/text_here"
                 android:textColor="@color/blue_single"
-                android:textSize="17sp" />
+                android:textSize="@dimen/item_title" />
 
             <!-- Place Address -->
 
@@ -47,10 +47,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_below="@id/name"
-                android:layout_marginEnd="75dp"
-                android:layout_marginTop="1dip"
+                android:layout_marginEnd="@dimen/view_end_margin"
+                android:layout_marginTop="@dimen/view_small_margin"
                 android:text="@string/text_here"
-                android:textSize="14sp" />
+                android:textSize="@dimen/item_subtitle" />
 
             <!-- Place rating -->
 
@@ -63,11 +63,11 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignTop="@id/name"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="@dimen/button_margin"
                 android:gravity="end"
                 android:text="@string/number_here"
-                android:textColor="#585858"
-                android:textSize="12sp"
+                android:textColor="@color/off_gray"
+                android:textSize="@dimen/item_subtitle_corner"
                 android:textStyle="bold" />
 
 
@@ -93,7 +93,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_below="@+id/distance"
                 android:contentDescription="@string/content"
-                android:paddingTop="4dp"
+                android:paddingTop="@dimen/view_spacing"
                 android:src="@drawable/direction_btn" />
 
 

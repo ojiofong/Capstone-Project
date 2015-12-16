@@ -2,7 +2,7 @@ package com.ojiofong.arounda.ui;
 
 import android.app.Dialog;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
@@ -24,12 +24,12 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.ojiofong.arounda.utils.AppManager;
 import com.ojiofong.arounda.R;
+import com.ojiofong.arounda.utils.AppManager;
 import com.ojiofong.arounda.utils.DirectionManager;
 import com.ojiofong.arounda.utils.SegmentedRadioGroup;
 
-public class MapActivitySingle extends ActionBarActivity implements OnClickListener {
+public class MapActivitySingle extends AppCompatActivity implements OnClickListener {
 
 	GoogleMap googlemap;
 	SupportMapFragment mf;
@@ -38,10 +38,6 @@ public class MapActivitySingle extends ActionBarActivity implements OnClickListe
 	private static int lastChecked;
 	RadioButton r;
 	private ImageView car_iv, transit_iv, cyclist_iv, walking_iv;
-	Boolean shouldAnimate = false;
-	Boolean shouldAnimate2 = false;
-	int pos, iconID;
-
 	// Dialog iconDialog;
 
 	@Override

@@ -45,6 +45,13 @@
     <color name="navy">#000080</color>
     <color name="black">#000000</color>
     <color name="mblue">#C5EEFA</color>
+
+
+    <color name="off_gray">#585858</color>
+    <color name="off_white">#ccc</color>
+
+
+
     <color name="blue_single">#071754</color>
     <color name="blue_singleborder_a">#b3e5fc</color>
     <color name="blue_singleborder_a_backup">#ABC7D9</color>

@@ -1,7 +1,5 @@
 package com.ojiofong.arounda.ui;
 
-import java.util.HashMap;
-
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -10,7 +8,7 @@ import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.ContextThemeWrapper;
 import android.view.Gravity;
@@ -35,12 +33,14 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.ojiofong.arounda.utils.AppManager;
 import com.ojiofong.arounda.R;
+import com.ojiofong.arounda.utils.AppManager;
 import com.ojiofong.arounda.utils.DirectionManager;
 import com.ojiofong.arounda.utils.SegmentedRadioGroup;
 
-public class MapActivity extends ActionBarActivity implements LocationListener, OnClickListener {
+import java.util.HashMap;
+
+public class MapActivity extends AppCompatActivity implements LocationListener, OnClickListener {
 
     SupportMapFragment mf;
     GoogleMap googlemap;

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="5dip" >
+    android:padding="@dimen/text_view__vertical_spacing" >
 
     <TextView
         android:id="@+id/loadMore"
@@ -11,15 +11,15 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:background="@drawable/load_more"
-        android:paddingBottom="7dip"
-        android:paddingLeft="25dip"
-        android:paddingRight="25dip"
-        android:layout_marginTop="5dp"
+        android:paddingBottom="@dimen/loadmore_vertical_spacing"
+        android:paddingStart="@dimen/loadmore_horizontal_spacing"
+        android:paddingEnd="@dimen/loadmore_horizontal_spacing"
+        android:layout_marginTop="@dimen/text_view__vertical_spacing"
         android:layout_alignParentTop="true"
-        android:paddingTop="7dip"
+        android:paddingTop="@dimen/loadmore_vertical_spacing"
         android:text="@string/load_more"
-        android:textColor="#ccc"
-        android:textSize="18sp"
+        android:textColor="@color/off_white"
+        android:textSize="@dimen/item_title"
         android:textStyle="bold"
         android:typeface="sans" />
     
@@ -27,7 +27,7 @@
         android:id="@+id/powered_by_google_loadmore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="@dimen/text_view__vertical_spacing"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/loadMore"
         android:clickable="false"

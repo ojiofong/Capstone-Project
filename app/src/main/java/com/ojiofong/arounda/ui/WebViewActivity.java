@@ -2,7 +2,7 @@ package com.ojiofong.arounda.ui;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,11 +11,11 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
-import com.ojiofong.arounda.utils.AppManager;
 import com.ojiofong.arounda.R;
+import com.ojiofong.arounda.utils.AppManager;
 
 @SuppressLint("SetJavaScriptEnabled")
-public class WebViewActivity extends ActionBarActivity {
+public class WebViewActivity extends AppCompatActivity {
 
 	WebView webview;
 

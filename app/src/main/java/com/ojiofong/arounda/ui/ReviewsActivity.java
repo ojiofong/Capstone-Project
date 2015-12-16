@@ -1,15 +1,10 @@
 package com.ojiofong.arounda.ui;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-
-
 import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -20,12 +15,16 @@ import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.ojiofong.arounda.data.Review;
-import com.ojiofong.arounda.utils.AppManager;
 import com.ojiofong.arounda.R;
 import com.ojiofong.arounda.ViewHolder;
+import com.ojiofong.arounda.data.Review;
+import com.ojiofong.arounda.utils.AppManager;
 
-public class ReviewsActivity extends ActionBarActivity {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
+public class ReviewsActivity extends AppCompatActivity {
 
 	List<Review> myReviews = new ArrayList<Review>();
 

@@ -3,7 +3,7 @@
     android:id="@+id/card_contact"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="5dp"
+    android:layout_marginBottom="@dimen/view_spacing"
     android:layout_marginStart="@dimen/key_line_1"
     android:layout_marginEnd="@dimen/key_line_1"
     android:layout_marginTop="@dimen/card_margin_top"
@@ -12,8 +12,8 @@
     android:elevation="@dimen/cardview_default_elevation"
     android:focusable="true"
     android:foreground="?selectableItemBackground"
-    android:paddingLeft="15dip"
-    android:paddingRight="15dip">
+    android:paddingStart="@dimen/activity_horizontal_margin"
+    android:paddingEnd="@dimen/activity_horizontal_margin">
 
 
     <RelativeLayout
@@ -26,12 +26,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="@dimen/view_spacing"
             android:background="@color/blue_singleborder_a"
-            android:paddingBottom="5dp"
-            android:paddingStart="15dp"
+            android:paddingBottom="@dimen/view_spacing"
+            android:paddingStart="@dimen/activity_horizontal_margin"
             android:paddingEnd="0dp"
-            android:paddingTop="5dp"
+            android:paddingTop="@dimen/view_spacing"
             android:text="@string/contact_details"
             android:textStyle="bold" />
 
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/contactDetails1"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/view_spacing"
             android:contentDescription="@string/content"
             android:src="@drawable/ic_action_call" />
 
@@ -54,15 +54,15 @@
             android:clickable="true"
             android:maxLines="1"
             android:text="@string/phone"
-            android:textColor="#071754"
-            android:textSize="17sp" />
+            android:textColor="@color/navy"
+            android:textSize="@dimen/item_title" />
 
         <ImageView
             android:id="@+id/imageWeb1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imagePhone1"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/view_spacing"
             android:contentDescription="@string/content"
             android:src="@drawable/ic_action_web_site" />
 
@@ -76,15 +76,15 @@
             android:maxLines="1"
             android:singleLine="true"
             android:text="@string/text_here"
-            android:textColor="#071754"
-            android:textSize="17sp" />
+            android:textColor="@color/navy"
+            android:textSize="@dimen/item_title" />
 
         <ImageView
             android:id="@+id/imageWeb2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imageWeb1"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/view_spacing"
             android:contentDescription="@string/content"
             android:src="@drawable/ic_action_web_site" />
 
@@ -98,8 +98,8 @@
             android:maxLines="1"
             android:singleLine="true"
             android:text="@string/text_here"
-            android:textColor="#071754"
-            android:textSize="17sp" />
+            android:textColor="@color/navy"
+            android:textSize="@dimen/item_title" />
 
     </RelativeLayout>
 

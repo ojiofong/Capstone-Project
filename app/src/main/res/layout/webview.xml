@@ -17,7 +17,7 @@
         android:id="@+id/ProgressBar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="@dimen/button_margin"
         android:indeterminate="false"
         android:progress="0"
         android:progressDrawable="@drawable/progresshorizontal_accent" />

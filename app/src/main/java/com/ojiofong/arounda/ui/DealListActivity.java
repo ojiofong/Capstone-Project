@@ -1,27 +1,11 @@
 package com.ojiofong.arounda.ui;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -38,14 +22,30 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
-import com.ojiofong.arounda.utils.AppManager;
 import com.ojiofong.arounda.DealCategoryFragmentDialog;
 import com.ojiofong.arounda.DealCategoryFragmentDialog.DealCategoryListener;
 import com.ojiofong.arounda.R;
 import com.ojiofong.arounda.adapter.DealsAdapter;
+import com.ojiofong.arounda.utils.AppManager;
 import com.ojiofong.arounda.utils.DirectionManager;
 
-public class DealListActivity extends ActionBarActivity implements OnClickListener, DealCategoryListener {
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class DealListActivity extends AppCompatActivity implements OnClickListener, DealCategoryListener {
 
 	private Double appLat, appLng;
 	protected static ArrayList<HashMap<String, String>> dealsList = new ArrayList<HashMap<String, String>>();

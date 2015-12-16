@@ -3,12 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="5dp" >
+    android:padding="@dimen/view_spacing" >
 
     <ImageView
         android:id="@+id/imageView1"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
+        android:layout_width="@dimen/grid_image_size"
+        android:layout_height="@dimen/grid_image_size"
         android:layout_gravity="center_horizontal"
         android:adjustViewBounds="true"
         android:contentDescription="@string/content"
@@ -20,8 +20,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="@string/text_here"
-        android:textColor="#152c81"
-        android:textSize="16sp"
+        android:textColor="@color/navy"
+        android:textSize="@dimen/item_title"
         android:singleLine="true"
         android:typeface="sans" />
 

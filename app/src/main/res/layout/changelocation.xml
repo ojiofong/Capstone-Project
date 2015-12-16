@@ -29,23 +29,23 @@
             <AutoCompleteTextView
                 android:id="@+id/autoCompleteTextView_real"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginBottom="5dp"
-                android:layout_marginEnd="15dp"
+                android:layout_height="@dimen/autocomplete_tv_height"
+                android:layout_marginBottom="@dimen/view_spacing"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="0dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="@dimen/view_spacing"
                 android:background="@drawable/rounded_edittext"
                 android:ems="10"
                 android:hint="@string/enter_few_letters"
                 android:imeOptions="actionSearch"
                 android:inputType="textAutoComplete"
                 android:maxLength="30"
-                android:padding="5dp"/>
+                android:padding="@dimen/view_spacing" />
 
             <ImageButton
                 android:id="@+id/searchAutoComp_b"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="@dimen/autocomplete_tv_height"
                 android:layout_alignBottom="@+id/autoCompleteTextView_real"
                 android:layout_alignEnd="@+id/autoCompleteTextView_real"
                 android:contentDescription="@string/content"
@@ -63,7 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:background="@color/red"
-            android:contentDescription="@string/app_name"/>
+            android:contentDescription="@string/app_name" />
 
         <ListView
             android:id="@+id/listView1"
@@ -71,17 +71,18 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/streetview_b"
             android:layout_below="@+id/autoCompleteTextView1"
-            android:layout_marginLeft="@dimen/key_line_1"
-            android:layout_marginRight="@dimen/key_line_1"
-            android:maxWidth="@dimen/max_width_layout"/>
+            android:layout_marginEnd="@dimen/key_line_1"
+            android:layout_marginStart="@dimen/key_line_1"
+            android:maxWidth="@dimen/max_width_layout" />
 
         <Button
             android:id="@+id/streetview_b"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_margin="2dp"
+            android:layout_margin="@dimen/button_margin"
             android:background="@drawable/blue_button"
+            android:contentDescription="@string/street_view"
             android:text="@string/street_view"
             android:textColor="@color/white"
             android:textStyle="bold" />

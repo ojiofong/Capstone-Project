@@ -3,6 +3,6 @@
     android:id="@+id/tvalone"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp"
-    android:textColor="#080A5C"
-    android:textSize="20sp" />
+    android:padding="@dimen/grid_spacing"
+    android:textColor="@color/navy"
+    android:textSize="@dimen/item_title" />

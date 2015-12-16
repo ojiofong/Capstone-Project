@@ -8,6 +8,7 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="fab_elevation">2dp</dimen>
     <dimen name="fab_press_translation_z">6dp</dimen>
+    <dimen name="toolbar_elevation">5dp</dimen>
 
 
     <dimen name="max_width_layout">@dimen/custom_match_parent</dimen> <!-- force match_parent -->
@@ -42,7 +43,31 @@
 
 
     <dimen name="grid_width">100dp</dimen>
+    <dimen name="grid_vertical_padding">2dp</dimen>
+    <dimen name="grid_spacing">10dp</dimen>
+    <dimen name="grid_image_size">55dp</dimen>
 
+
+    <dimen name="view_spacing">5dp</dimen>
+    <dimen name="autocomplete_tv_height">40dp</dimen>
+    <dimen name="button_margin">2dp</dimen>
+    <dimen name="view_end_margin">75dp</dimen>
+    <dimen name="view_small_margin">1dp</dimen>
+
+    <dimen name="item_title">17sp</dimen>
+    <dimen name="item_subtitle">14sp</dimen>
+    <dimen name="item_subtitle_corner">12sp</dimen>
+
+
+    <dimen name="loadmore_vertical_spacing">7dp</dimen>
+    <dimen name="loadmore_horizontal_spacing">25dp</dimen>
+    <dimen name="statusline_padding">25dp</dimen>
+
+
+    <dimen name="dialog_horizontal_space">290dp</dimen>
+    <dimen name="map_streetview_size">100dp</dimen>
+    <dimen name="topview_space">30dp</dimen>
+    <dimen name="default_image_size">40dp</dimen>
 
 
 

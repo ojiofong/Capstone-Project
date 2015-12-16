@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -35,16 +34,14 @@
                 android:id="@+id/statusSingle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/contactDetails1"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="10dp"
-                android:paddingBottom="7dip"
-                android:paddingLeft="25dip"
-                android:paddingRight="25dip"
-                android:paddingTop="7dip"
+                android:layout_marginBottom="@dimen/grid_spacing"
+                android:paddingBottom="@dimen/loadmore_vertical_spacing"
+                android:paddingStart="@dimen/statusline_padding"
+                android:paddingEnd="@dimen/statusline_padding"
+                android:paddingTop="@dimen/loadmore_vertical_spacing"
                 android:text="@string/fetching_details"
-                android:textColor="#ccc"
-                android:textSize="18sp"
+                android:textColor="@color/off_white"
+                android:textSize="@dimen/item_title"
                 android:textStyle="bold"
                 android:typeface="sans" />
 
@@ -53,7 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="27dp"
+                android:layout_marginTop="@dimen/topview_space"
                 android:clickable="false"
                 android:contentDescription="@string/content"
                 android:src="@drawable/powered_by_google_light" />

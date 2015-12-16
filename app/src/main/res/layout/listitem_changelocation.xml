@@ -7,10 +7,10 @@
         android:id="@+id/changeLocation_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:textColor="#080A5C"
+        android:padding="@dimen/grid_spacing"
+        android:textColor="@color/navy"
         android:text="@string/text_here"
-        android:textSize="17sp" >
+        android:textSize="@dimen/item_title" >
     </TextView>
 
 </RelativeLayout>
