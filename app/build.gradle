@@ -10,11 +10,22 @@ android {
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
-
         //multiDexEnabled true
     }
+
+    signingConfigs {
+        release {
+            storeFile file("key/cityexplorer.jks")
+            storePassword "123456"
+            keyAlias "cityexplorer"
+            keyPassword "123456"
+        }
+    }
+
+
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }

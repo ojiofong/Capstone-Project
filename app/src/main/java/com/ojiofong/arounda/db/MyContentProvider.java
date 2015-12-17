@@ -49,14 +49,14 @@ public class MyContentProvider extends ContentProvider {
 
     }
 
-    private MyDbHelper mMiniDBHelper;
+    private MyDbHelper myDbHelper;
     private Context context;
 
     @Override
     public boolean onCreate() {
         this.context = getContext();
         addURIs();
-        mMiniDBHelper = new MyDbHelper(getContext(), Const.DATABASE_NAME, Const.DATABASE_VERSION);
+        myDbHelper = new MyDbHelper(getContext(), Const.DATABASE_NAME, Const.DATABASE_VERSION);
         return true;
     }
 
@@ -79,7 +79,7 @@ public class MyContentProvider extends ContentProvider {
     @Override
     public Uri insert(@NonNull Uri uri, ContentValues values) {
         final String table = uri.getLastPathSegment();
-        final long rowId = mMiniDBHelper.getWritableDatabase().insertWithOnConflict(table, null, values, SQLiteDatabase.CONFLICT_IGNORE);
+        final long rowId = myDbHelper.getWritableDatabase().insertWithOnConflict(table, null, values, SQLiteDatabase.CONFLICT_IGNORE);
         String notify;
         if (rowId != -1 && ((notify = uri.getQueryParameter(QUERY_NOTIFY)) == null || "true".equals(notify))) {
             context.getContentResolver().notifyChange(uri, null, false);
@@ -91,7 +91,7 @@ public class MyContentProvider extends ContentProvider {
     public int bulkInsert(@NonNull Uri uri, @NonNull ContentValues[] values) {
 
         final String table = uri.getLastPathSegment();
-        final SQLiteDatabase db = mMiniDBHelper.getWritableDatabase();
+        final SQLiteDatabase db = myDbHelper.getWritableDatabase();
         int res = 0;
         db.beginTransaction();
         try {
@@ -116,7 +116,7 @@ public class MyContentProvider extends ContentProvider {
     @Override
     public int update(@NonNull Uri uri, ContentValues values, String selection, String[] selectionArgs) {
         final QueryParams queryParams = getQueryParams(uri, selection);
-        int res = mMiniDBHelper.getWritableDatabase().updateWithOnConflict(queryParams.table, values, queryParams.selection, selectionArgs, SQLiteDatabase.CONFLICT_IGNORE);
+        int res = myDbHelper.getWritableDatabase().updateWithOnConflict(queryParams.table, values, queryParams.selection, selectionArgs, SQLiteDatabase.CONFLICT_IGNORE);
 
         String notify;
         if (res != 0 && ((notify = uri.getQueryParameter(QUERY_NOTIFY)) == null || "true".equals(notify))) {
@@ -128,7 +128,7 @@ public class MyContentProvider extends ContentProvider {
     @Override
     public int delete(@NonNull Uri uri, String selection, String[] selectionArgs) {
         final QueryParams queryParams = getQueryParams(uri, selection);
-        final int res = mMiniDBHelper.getWritableDatabase().delete(queryParams.table, queryParams.selection, selectionArgs);
+        final int res = myDbHelper.getWritableDatabase().delete(queryParams.table, queryParams.selection, selectionArgs);
         String notify;
         if (res != 0 && ((notify = uri.getQueryParameter(QUERY_NOTIFY)) == null || "true".equals(notify))) {
             context.getContentResolver().notifyChange(uri, null, false);
@@ -140,7 +140,7 @@ public class MyContentProvider extends ContentProvider {
     public Cursor query(@NonNull Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
         final String groupBy = uri.getQueryParameter(QUERY_GROUP_BY);
         final QueryParams queryParams = getQueryParams(uri, selection);
-        final Cursor res = mMiniDBHelper.getReadableDatabase().query(queryParams.table, projection, queryParams.selection, selectionArgs, groupBy,
+        final Cursor res = myDbHelper.getReadableDatabase().query(queryParams.table, projection, queryParams.selection, selectionArgs, groupBy,
                 null, sortOrder == null ? queryParams.orderBy : sortOrder);
         res.setNotificationUri(context.getContentResolver(), uri);
         return res;

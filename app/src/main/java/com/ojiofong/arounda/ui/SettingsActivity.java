@@ -1,5 +1,6 @@
 package com.ojiofong.arounda.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.Preference;
@@ -41,16 +42,16 @@ public class SettingsActivity extends AppCompatActivity {
 
 	}
 
-	public boolean onPreferenceClick(Preference preference) {
+	public static boolean onPreferenceClick(Preference preference, Activity activity) {
 
 		if (preference.getKey().matches("open_source")) {
 
-			Intent i = new Intent(getApplicationContext(), WebViewActivity.class);
+			Intent i = new Intent(activity, WebViewActivity.class);
 			String url = "http://sovancegroup.com/android/arounda/opensource/";
 			i.putExtra("url", url);
 			i.putExtra("actionBarTitle", "Open Source Attribution");
-			startActivity(i);
-			overridePendingTransition(R.anim.right_slide_in, R.anim.left_slide_out); // for starting activity only
+			activity.startActivity(i);
+			activity.overridePendingTransition(R.anim.right_slide_in, R.anim.left_slide_out); // for starting activity only
 
 		}
 
@@ -70,7 +71,7 @@ public class SettingsActivity extends AppCompatActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
-	public class QuickPrefsFragment extends PreferenceFragment {
+	public static class QuickPrefsFragment extends PreferenceFragment {
 
 		public QuickPrefsFragment(){
 		}
@@ -85,7 +86,7 @@ public class SettingsActivity extends AppCompatActivity {
 		@Override
 		public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
 			// TODO Auto-generated method stub
-			onPreferenceClick(preference);
+			onPreferenceClick(preference, getActivity());
 			return super.onPreferenceTreeClick(preferenceScreen, preference);
 		}
 
