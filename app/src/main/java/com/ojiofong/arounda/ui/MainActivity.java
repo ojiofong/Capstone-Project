@@ -50,6 +50,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
 
+    public static final String TAG = MainActivity.class.getSimpleName();
     public ArrayList<PopularPlace> myPopularPlaces = new ArrayList<PopularPlace>();
     protected static String clickedName, clickedPlaceID;
     protected static int clickedPosition;
@@ -71,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_main_viewpager);
-        //new AppManager(this).setStatusBarColorForKitKat(getResources().getColor(R.color.colorPrimaryDark));
+     //   new AppManager(this).setStatusBarColorForKitKat(ContextCompat.getColor(this, R.color.colorPrimaryDark));
         initToolBar();
         setUpFab();
         checkConnections();
@@ -80,8 +81,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         //sortList();
         buildGoogleApiClient();
         createLocationRequest();
-
-
         setupViewPager();
 
     }
@@ -213,10 +212,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
         GPSUtil gps = new GPSUtil(MainActivity.this);
         if (gpsAlert.matches("ON") && (!gps.canGetLocation())) {
-
-            Context mThemeContext = new ContextThemeWrapper(this, R.style.AppTheme);
             AlertDialogManager alert = new AlertDialogManager();
-            alert.showGPSWarningAlert(mThemeContext);
+            alert.showGPSWarningAlert(this);
         }
 
     }
@@ -245,20 +242,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
     }
 
-//	private void initFusedLocation() {
-//
-//		// Create a new global location parameters object
-//		mLocationRequest = LocationRequest.create();
-//		mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-//		// Set the update interval to 5 seconds
-//		mLocationRequest.setInterval(5000);
-//		// Set the interval ceiling to one minute
-//		mLocationRequest.setFastestInterval(1000);
-//		// Note that location updates are off until the user turns them on
-//		mUpdatesRequested = false;
-//		// Create a new location client, using the enclosing class to handle callbacks.
-//		//mLocationClient = new LocationClient(this, this, this);
-//	}
 
     private void populatePlaceList() {
         // myPopularPlaces.add(dealObject);
@@ -447,8 +430,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
             try {
                 // Start an Activity that tries to resolve the error
                 connectionResult.startResolutionForResult(this, CONNECTION_FAILURE_RESOLUTION_REQUEST);
-				/*
-				 * Thrown if Google Play services canceled the original
+                /*
+                 * Thrown if Google Play services canceled the original
 				 * PendingIntent
 				 */
             } catch (IntentSender.SendIntentException e) {
@@ -460,7 +443,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 			 * If no resolution is available, display a dialog to the user with
 			 * the error.
 			 */
-           // showErrorDialog(connectionResult.getErrorCode());
+            // showErrorDialog(connectionResult.getErrorCode());
             Toast.makeText(this, getString(R.string.unable_to_resolve_connection) + ": " + connectionResult.getErrorCode(), Toast.LENGTH_SHORT).show();
         }
     }
@@ -476,93 +459,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         gpsUtil.setLastKnownLongitude(String.valueOf(location.getLongitude()));
     }
 
-//    private class addOrRemoveDealTask extends AsyncTask<Void, Void, String> {
-//
-//        @Override
-//        protected String doInBackground(Void... params) {
-//            // TODO Auto-generated method stub
-//            if (!myPopularPlaces.isEmpty()) {
-//                DirectionManager dm = new DirectionManager(MainActivity.this);
-//
-//                double lat = dm.getAppLat();
-//                double lng = dm.getAppLng();
-//
-//                Geocoder gcd = new Geocoder(MainActivity.this, Locale.getDefault());
-//                List<Address> addresses = null;
-//                try {
-//                    addresses = gcd.getFromLocation(lat, lng, 1);
-//
-//                    if (addresses.size() > 0) {
-//                        String countryCode = addresses.get(0).getCountryCode();
-//                        return countryCode;
-//                    }
-//                } catch (IOException e) {
-//                    // TODO Auto-generated catch block
-//                    e.printStackTrace();
-//                }
-//
-//            }
-//            return null;
-//        }
-//
-//        @Override
-//        protected void onPostExecute(String result) {
-//            super.onPostExecute(result);
-//            if (result != null)
-//                if (!result.matches("US") && !result.matches("CA") && myPopularPlaces.contains(dealObject)) {
-//                    //if not in US and Canada remove groupon deal
-//                    myPopularPlaces.remove(dealObject);
-//                    sortList();
-//                    adapter.notifyDataSetChanged();
-//                    adapter2.notifyDataSetChanged();
-//                } else if ((result.matches("US") || result.matches("CA")) && !myPopularPlaces.contains(dealObject)) {
-//                    //if user is from US add the deal
-//                    myPopularPlaces.add(dealObject);
-//                    sortList();
-//                    adapter.notifyDataSetChanged();
-//                    adapter2.notifyDataSetChanged();
-//                }
-//
-//        }
-//
-//    }
-
-//	@Override
-//	protected void onPause() {
-//		// Save the current setting for updates
-//		mEditor.putBoolean("KEY_UPDATES_ON", mUpdatesRequested);
-//		mEditor.commit();
-//
-//		super.onPause();
-//	}
-
-//	@Override
-//	protected void onResume() {
-//
-//		//addOrRemoveDeal();
-//
-//		new addOrRemoveDealTask().execute();
-//
-//		super.onResume();
-//		// .... other stuff in my onBackPressed ....
-//		this.doubleBackToExitPressedOnce = false;
-//
-//		/*
-//		 * Get any previous setting for location updates Gets "false" if an
-//		 * error occurs
-//		 */
-//		if (okay()) { //crashes without this validation
-//			if (mPrefs.contains("KEY_UPDATES_ON")) {
-//				mUpdatesRequested = mPrefs.getBoolean("KEY_UPDATES_ON", false);
-//			} else {
-//				// Otherwise, turn off location updates
-//				mEditor.putBoolean("KEY_UPDATES_ON", false);
-//				mEditor.commit();
-//
-//			}
-//		}
-//
-//	}
 
     private void rateAppIfNeeded() {
         Context mThemeContext = new ContextThemeWrapper(this, R.style.AppTheme);

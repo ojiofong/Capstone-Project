@@ -32,7 +32,7 @@ public class ReviewsActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_singlenext);
+		setContentView(R.layout.activity_reviews);
 		new AppManager(this).setStatusBarColorForKitKat(getResources().getColor(R.color.colorPrimaryDark));
 
 		initToolBar();

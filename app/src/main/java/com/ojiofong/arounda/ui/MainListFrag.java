@@ -8,11 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
 
 import com.ojiofong.arounda.R;
-import com.ojiofong.arounda.adapter.CarAdapter;
 import com.ojiofong.arounda.adapter.PopularPlacesAdapter;
 import com.ojiofong.arounda.data.PopularPlace;
 import com.ojiofong.arounda.data.RecyclerItemClickListener;
@@ -40,24 +37,6 @@ public class MainListFrag extends Fragment {
         return rootView;
     }
 
-    private void populateListView(final ArrayList<PopularPlace> myPopularPlaces) {
-
-        CarAdapter adapter = new CarAdapter(getActivity(), R.layout.single_item_view, myPopularPlaces);
-
-        ListView list = (ListView) rootView.findViewById(R.id.listView1);
-        list.setAdapter(adapter);
-
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View viewClicked, int position, long id) {
-
-                ((MainActivity) getActivity()).goToNextActivity(position);
-
-            }
-
-        });
-    }
 
     private void setUpRecyclerView(final ArrayList<PopularPlace> myPopularPlaces) {
         RecyclerView mRecyclerView;

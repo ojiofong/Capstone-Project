@@ -30,7 +30,7 @@
         android:theme="@style/AppTheme" >
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="YOUR_API_KEY_HERE" />
+            android:value="YOUR_GOOGLE_API_KEY" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -92,18 +92,6 @@
             android:name=".ui.WebViewActivity"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
-        <activity
-            android:name=".ui.DealListActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity
-            android:name=".ui.SingleDealActivity"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
-        <activity
-            android:name=".ui.MapActivityDeal"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
 
         <!--widget provider-->
         <receiver android:name=".provider.MyWidgetProvider">
@@ -114,6 +102,12 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/appwidget_info" />
         </receiver>
+
+        <!--provider-->
+        <provider
+            android:name=".db.MyContentProvider"
+            android:authorities="@string/provider_authority"
+            android:exported="false" />
 
     </application>
 

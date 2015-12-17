@@ -2,14 +2,20 @@ package com.ojiofong.arounda.ui;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -32,11 +38,11 @@ import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
 import com.ojiofong.arounda.R;
-import com.ojiofong.arounda.Wrapper;
-import com.ojiofong.arounda.adapter.TheAdapter;
+import com.ojiofong.arounda.adapter.LocationHistoryAdapter;
+import com.ojiofong.arounda.db.LocationHistory;
 import com.ojiofong.arounda.utils.Configuration;
+import com.ojiofong.arounda.utils.Const;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -49,46 +55,54 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 
-public class ChangeLocationActivity extends ActionBarActivity implements OnClickListener {
+public class ChangeLocationActivity extends AppCompatActivity implements OnClickListener, LoaderManager.LoaderCallbacks<Cursor> {
 
+    private static final String TAG = ChangeLocationActivity.class.getSimpleName();
     ImageButton searchButton;
     Button streetView_b;
     TextView tvUseCurrentLocation;
     ArrayAdapter<String> adapter;
     AutoCompleteTextView acTextView;
-    ArrayList<HashMap<String, String>> arrayListOfMap = new ArrayList<HashMap<String, String>>();
-    ArrayAdapter<HashMap<String, String>> listadapter;
-    String str;
     JSONArray myJsonArray;
     View headerView;
+    private static final int LOADER_ID = 7;
+    LocationHistoryAdapter locationHistoryAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.changelocation);
-      //  new AppManager(this).setStatusBarColorForKitKat(getResources().getColor(R.color.colorPrimaryDark));
+        //  new AppManager(this).setStatusBarColorForKitKat(getResources().getColor(R.color.colorPrimaryDark));
 
         initToolBar();
         initialize();
-        retrieveArrayList();
-        listadapter = new TheAdapter(getApplicationContext(), arrayListOfMap);
-        populateListView();
+        setUpListView();
         adapterToAutoTV();
+
+        getSupportLoaderManager().initLoader(LOADER_ID, null, this);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getSupportLoaderManager().restartLoader(LOADER_ID, null, this);
+    }
 
     private void initToolBar() {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setElevation(0);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(getString(R.string.change_location));
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setElevation(0);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle(getString(R.string.change_location));
+
+        }
+
 
     }
 
@@ -147,18 +161,8 @@ public class ChangeLocationActivity extends ActionBarActivity implements OnClick
 
     }
 
-    private void populateListAndChangeLocation(String desc, String lat, String lng) {
-        // called on post execute of TheTask class
-        HashMap<String, String> map = new HashMap<String, String>();
-        map.put("description", desc);
-        map.put("latitude", lat);
-        map.put("longitude", lng);
-
-        arrayListOfMap.add(map);
-        listadapter.notifyDataSetChanged();
-        //acTextView.setText("");
-
-        saveArrayList();
+    private void saveToDbAndChangeLocation(String vicinity, String lat, String lng) {
+        insertLocationItem(vicinity, lat, lng);
 
         // Let's change the Location Finally to this latitude and longitude
         // Holding selected the values in sharedPreferences
@@ -166,8 +170,8 @@ public class ChangeLocationActivity extends ActionBarActivity implements OnClick
         editor.putBoolean("usecurrentloc_Pref", false);
         editor.putString("lat_Pref", lat);
         editor.putString("lng_Pref", lng);
-        editor.putString("item_desc", desc);
-        editor.commit();
+        editor.putString("item_desc", vicinity);
+        editor.apply();
 
         Toast.makeText(getApplicationContext(), getString(R.string.new_location_updated), Toast.LENGTH_SHORT).show();
 
@@ -176,60 +180,59 @@ public class ChangeLocationActivity extends ActionBarActivity implements OnClick
 
     }
 
-    private void saveArrayList() {
-        // called in populateList method
-        // convert ArrayList with Gson to json and save as string in sharedPreferences
-        Wrapper wrapper = new Wrapper();
-        wrapper.setWrapperList(arrayListOfMap);
 
-        Gson gson = new Gson();
-        String s = gson.toJson(wrapper);
-
-        //	System.out.println("GSON OUTPUT: " + s);
-
-        SharedPreferences.Editor editor = getSharedPreferences("settings", Context.MODE_PRIVATE).edit();
-        editor.putString("gsonList_Pref", s);
-        editor.commit();
-
+    private void insertLocationItem(String vicinity, String latitude, String longitude) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(LocationHistory.LOCATIONHISTORY_VICINITY, vicinity);
+        contentValues.put(LocationHistory.LOCATIONHISTORY_LATITUDE, latitude);
+        contentValues.put(LocationHistory.LOCATIONHISTORY_LONGITUDE, longitude);
+        getContentResolver().insert(LocationHistory.CONTENT_URI, contentValues);
     }
 
-    private void retrieveArrayList() {
-        // called on onCreate Bundle to retrieve ArrayList if present
-        SharedPreferences getPref = getSharedPreferences("settings", Context.MODE_PRIVATE);
-        String str = getPref.getString("gsonList_Pref", null);
-
-        if (str != null) { // do only if not null
-
-            Gson gson = new Gson();
-            Wrapper wrapper = gson.fromJson(str, Wrapper.class);
-            ArrayList<HashMap<String, String>> retrievedList = wrapper.getWrapperList();
-            arrayListOfMap = retrievedList;
-
-        }
-
+    private void deleteLocationItem(long id) {
+        Uri uri = Uri.parse(LocationHistory.CONTENT_URI + "/" + id);
+        getContentResolver().delete(uri, null, null);
+        getSupportLoaderManager().restartLoader(LOADER_ID, null, this);
     }
 
-    private void populateListView() {
+    private void setUpListView() {
 
         ListView listview = (ListView) findViewById(R.id.listView1);
         listview.addHeaderView(headerView); //must call before set adapter
-        listview.setAdapter(listadapter);
+
+        Cursor cursor = null;
+
+        try {
+            cursor = getContentResolver().query(
+                    LocationHistory.CONTENT_URI,
+                    null, // leaving "columns" null returns all the columns.
+                    null, // cols for "where" clause
+                    null, // values for "where" clause
+                    null  // sort order
+            );
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        locationHistoryAdapter = new LocationHistoryAdapter(this, cursor, Const.FLAG_LOCATION_HISTORY);
+        listview.setAdapter(locationHistoryAdapter);
 
         listview.setOnItemClickListener(new OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // plus one because header is now position 0.
+                // minus one because header is added.
                 changeToSelectedLocation(position - 1);
-
             }
         });
 
         registerForContextMenu(listview);
+
     }
 
     private void adapterToAutoTV() {
-        adapter = new ArrayAdapter<String>(this, R.layout.listitem_autocomplete);
+        adapter = new ArrayAdapter<>(this, R.layout.listitem_autocomplete);
         adapter.setNotifyOnChange(true);
         acTextView.setAdapter(adapter);
 
@@ -238,7 +241,7 @@ public class ChangeLocationActivity extends ActionBarActivity implements OnClick
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 /*
-				 * Right below that, we setup our text watcher. This will run
+                 * Right below that, we setup our text watcher. This will run
 				 * every time the text changes. This is pretty crude on my
 				 * part,but to limit the amount of calls to the webService, I'm
 				 * checking every 3 characters. We call GetPlaces and run it as
@@ -276,14 +279,14 @@ public class ChangeLocationActivity extends ActionBarActivity implements OnClick
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String description = new String();
-                String reference = new String();
+                String description;
+                String reference;
 
                 // TODO Auto-generated method stub
                 try {
 
-                    description = myJsonArray.getJSONObject(position).getString("description").toString();
-                    reference = myJsonArray.getJSONObject(position).getString("reference").toString();
+                    description = myJsonArray.getJSONObject(position).getString("description");
+                    reference = myJsonArray.getJSONObject(position).getString("reference");
 
                     // Toast.makeText(getApplicationContext(), "" + description, Toast.LENGTH_SHORT).show();
 
@@ -304,22 +307,33 @@ public class ChangeLocationActivity extends ActionBarActivity implements OnClick
 
     private void changeToSelectedLocation(int pos) {
 
-        // String itemDescr = arrayListOfMap.get(pos).get("description");
-        String itemLat = arrayListOfMap.get(pos).get("latitude");
-        String itemLng = arrayListOfMap.get(pos).get("longitude");
-        String itemDesc = arrayListOfMap.get(pos).get("description");
-
-        // Holding selected map values in sharedPreferences
+        // Holding selected  values in sharedPreferences
         SharedPreferences.Editor editor = getSharedPreferences("settings", Context.MODE_PRIVATE).edit();
         editor.putBoolean("usecurrentloc_Pref", false);
-        editor.putString("lat_Pref", itemLat);
-        editor.putString("lng_Pref", itemLng);
-        editor.putString("item_desc", itemDesc);
-        editor.commit();
+        editor.putString("lat_Pref", getSelectedLatitude(pos));
+        editor.putString("lng_Pref", getSelectedLongitude(pos));
+        editor.putString("item_desc", getSelectedVicinity(pos));
+        editor.apply();
 
         Toast.makeText(getApplicationContext(), getString(R.string.new_location_updated), Toast.LENGTH_SHORT).show();
         finish();
         overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right); //exit animation
+    }
+
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+
+        return new CursorLoader(this, LocationHistory.CONTENT_URI, null, null, null, null);
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        locationHistoryAdapter.changeCursor(data);
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+        locationHistoryAdapter.changeCursor(null);
     }
 
     private class GetPlaces extends AsyncTask<String, Void, ArrayList<String>> {
@@ -327,19 +341,19 @@ public class ChangeLocationActivity extends ActionBarActivity implements OnClick
         @Override
         protected ArrayList<String> doInBackground(String... params) {
 
-            ArrayList<String> predictionsArr = new ArrayList<String>();
+            ArrayList<String> predictionsArr = new ArrayList<>();
 
             try {
                 URL googlePlaces = new URL(
                         // URLEncoder.encode(url,"UTF-8");
-                        "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=" + URLEncoder.encode(params[0].toString(), "UTF-8")
+                        "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=" + URLEncoder.encode(params[0], "UTF-8")
                                 + "&types=geocode&language=en&sensor=false&key=" + Configuration.getApiKey());
 
                 URLConnection conn = googlePlaces.openConnection();
                 BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
                 String line;
-                StringBuffer sb = new StringBuffer();
+                StringBuilder sb = new StringBuilder();
                 // take Google's legible JSON and turn it into one big string.
                 while ((line = in.readLine()) != null) {
                     sb.append(line);
@@ -358,11 +372,9 @@ public class ChangeLocationActivity extends ActionBarActivity implements OnClick
                     predictionsArr.add(jo.getString("description"));
                 }
 
-            } catch (IOException e) {
-
-            } catch (JSONException e) {
-
+            } catch (IOException | JSONException e) {
                 e.printStackTrace();
+
             }
 
             return predictionsArr;
@@ -370,22 +382,14 @@ public class ChangeLocationActivity extends ActionBarActivity implements OnClick
 
         @Override
         protected void onPostExecute(ArrayList<String> result) {
-            // TODO Auto-generated method stub
-
-            //	for (int i = 0; i < result.size(); i++) {
-            //		System.out.println("description" + i + ": " + result.get(i));
-            //	}
-
+            super.onPostExecute(result);
             // update the adapter
-            adapter = new ArrayAdapter<String>(getBaseContext(), R.layout.listitem_autocomplete);
+            adapter = new ArrayAdapter<>(getBaseContext(), R.layout.listitem_autocomplete);
             adapter.setNotifyOnChange(true);
             // attach the adapter to textView
             acTextView.setAdapter(adapter);
 
-            super.onPostExecute(result);
-
             for (String string : result) {
-
                 adapter.add(string);
                 adapter.notifyDataSetChanged();
 
@@ -402,7 +406,7 @@ public class ChangeLocationActivity extends ActionBarActivity implements OnClick
         urlString = new StringBuilder("https://maps.googleapis.com/maps/api/place/details/json?");
         urlString.append("reference=");
         urlString.append(reference);
-        urlString.append("&sensor=false&key=" + Configuration.getApiKey());
+        urlString.append("&sensor=false&key=").append(Configuration.getApiKey());
 
         StringBuilder content = new StringBuilder();
         try {
@@ -411,7 +415,7 @@ public class ChangeLocationActivity extends ActionBarActivity implements OnClick
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()), 8);
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                content.append(line + "\n");
+                content.append(line).append("\n");
             }
             bufferedReader.close();
         } catch (Exception e) {
@@ -425,7 +429,7 @@ public class ChangeLocationActivity extends ActionBarActivity implements OnClick
     private class GetFurtherDetailsTask extends AsyncTask<String, Void, Void> {
         String jsonResult;
         String myReference;
-        String myDescription;
+        String vicinity;
         String latitude;
         String longitude;
         JSONObject jsonobject;
@@ -434,14 +438,14 @@ public class ChangeLocationActivity extends ActionBarActivity implements OnClick
         protected Void doInBackground(String... params) {
 
             myReference = params[0];
-            myDescription = params[1];
+            vicinity = params[1];
             jsonResult = getUrlContents(myReference);
 
             try {
                 jsonobject = new JSONObject(jsonResult).getJSONObject("result").getJSONObject("geometry").getJSONObject("location");
 
-                latitude = jsonobject.getString("lat").toString();
-                longitude = jsonobject.getString("lng").toString();
+                latitude = jsonobject.getString("lat");
+                longitude = jsonobject.getString("lng");
 
             } catch (JSONException e) {
                 // TODO Auto-generated catch block
@@ -453,10 +457,8 @@ public class ChangeLocationActivity extends ActionBarActivity implements OnClick
 
         @Override
         protected void onPostExecute(Void result) {
-
-            populateListAndChangeLocation(myDescription, latitude, longitude);
-
             super.onPostExecute(result);
+            saveToDbAndChangeLocation(vicinity, latitude, longitude);
         }
     }
 
@@ -499,17 +501,14 @@ public class ChangeLocationActivity extends ActionBarActivity implements OnClick
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // When Delete is Clicked
-                        // clear list adapter
-                        listadapter.clear();
-                        listadapter.notifyDataSetChanged();
 
-                        // Now null sharedPreferences to avoid retrieving list
-                        // And Restore Default Current Location
+                        // Empty db table
+                        getContentResolver().delete(LocationHistory.CONTENT_URI, null, null);
+
+                        //  Restore Default Current Location
                         SharedPreferences.Editor editor = getSharedPreferences("settings", Context.MODE_PRIVATE).edit();
-                        editor.putString("gsonList_Pref", null);
                         editor.putBoolean("usecurrentloc_Pref", true);
-                        editor.commit();
+                        editor.apply();
 
                         Toast.makeText(getApplicationContext(), getString(R.string.history_deleted), Toast.LENGTH_SHORT).show();
 
@@ -535,7 +534,7 @@ public class ChangeLocationActivity extends ActionBarActivity implements OnClick
                 // Restore Default Current Location
                 SharedPreferences.Editor editor = getSharedPreferences("settings", Context.MODE_PRIVATE).edit();
                 editor.putBoolean("usecurrentloc_Pref", true);
-                editor.commit();
+                editor.apply();
                 // then create Toast and return to home screen
                 Toast.makeText(getApplicationContext(), getString(R.string.now_using_current_location), Toast.LENGTH_SHORT).show();
                 finish();
@@ -563,14 +562,10 @@ public class ChangeLocationActivity extends ActionBarActivity implements OnClick
             case R.id.streetview_b:
 
                 SharedPreferences getPref = getSharedPreferences("settings", 0);
-                boolean usingCurrentLocation = getPref.getBoolean("usecurrentloc_Pref", true); // default to true if nothing
-                String addyDesc = getPref.getString("item_desc", null);
-
-                String latString,
-                        lngString;
+                boolean usingCurrentLocation = getPref.getBoolean("usecurrentloc_Pref", true); // defaults to true
+                String addyDesc, latString, lngString;
 
                 if (usingCurrentLocation) {
-
                     latString = getIntent().getStringExtra("latString");
                     lngString = getIntent().getStringExtra("lngString");
                     addyDesc = getString(R.string.current_location);
@@ -599,7 +594,11 @@ public class ChangeLocationActivity extends ActionBarActivity implements OnClick
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
         if (v.getId() == R.id.listView1) {
             AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
-            String headerTitle = this.listadapter.getItem(info.position - 1).get("description"); //-1 bCos of headerView
+
+            //  long id = info.id;
+            int position = info.position - 1; // minus one because of header
+            String headerTitle = getSelectedVicinity(position);
+            //  Log.d(TAG, "id " + id + " header: " + headerTitle);
             menu.setHeaderTitle(headerTitle);
             String[] MENU_ITEMS = {getString(R.string.change_location), getString(R.string.delete), getString(R.string.cancel)};
             for (int i = 0; i < MENU_ITEMS.length; i++) {
@@ -618,29 +617,14 @@ public class ChangeLocationActivity extends ActionBarActivity implements OnClick
             case 0: //change location
 
                 int pos = info.position - 1; //-1 bCos of headerView
-                String itemLat = arrayListOfMap.get(pos).get("latitude");
-                String itemLng = arrayListOfMap.get(pos).get("longitude");
-                String itemDesc = arrayListOfMap.get(pos).get("description");
 
-                // Holding selected map values in sharedPreferences
-                SharedPreferences.Editor editor = getSharedPreferences("settings", Context.MODE_PRIVATE).edit();
-                editor.putBoolean("usecurrentloc_Pref", false);
-                editor.putString("lat_Pref", itemLat);
-                editor.putString("lng_Pref", itemLng);
-                editor.putString("item_desc", itemDesc);
-                editor.commit();
-
-                Toast.makeText(getApplicationContext(), getString(R.string.new_location_updated), Toast.LENGTH_SHORT).show();
-                finish();
-                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right); //exit animation
+                changeToSelectedLocation(pos);
 
                 break;
 
             case 1: //delete
 
-                arrayListOfMap.remove(info.position - 1);
-                listadapter.notifyDataSetChanged();
-                saveArrayList();
+                deleteLocationItem(info.id);
 
                 break;
 
@@ -658,5 +642,39 @@ public class ChangeLocationActivity extends ActionBarActivity implements OnClick
         this.finish();
         overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right); //exit animation
 
+    }
+
+    private String getSelectedVicinity(int position) {
+        String vicinity = "";
+
+        Cursor cursor = getContentResolver().query(LocationHistory.CONTENT_URI, null, null, null, null);
+        if (cursor != null) {
+            cursor.moveToPosition(position);
+            vicinity = cursor.getString(cursor.getColumnIndexOrThrow(LocationHistory.LOCATIONHISTORY_VICINITY));
+            cursor.close();
+        }
+        return vicinity;
+    }
+
+    private String getSelectedLatitude(int position) {
+        String latitude = "";
+        Cursor cursor = getContentResolver().query(LocationHistory.CONTENT_URI, null, null, null, null);
+        if (cursor != null) {
+            cursor.moveToPosition(position);
+            latitude = cursor.getString(cursor.getColumnIndexOrThrow(LocationHistory.LOCATIONHISTORY_LATITUDE));
+            cursor.close();
+        }
+        return latitude;
+    }
+
+    private String getSelectedLongitude(int position) {
+        String longitude = "";
+        Cursor cursor = getContentResolver().query(LocationHistory.CONTENT_URI, null, null, null, null);
+        if (cursor != null) {
+            cursor.moveToPosition(position);
+            longitude = cursor.getString(cursor.getColumnIndexOrThrow(LocationHistory.LOCATIONHISTORY_LONGITUDE));
+            cursor.close();
+        }
+        return longitude;
     }
 }

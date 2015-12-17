@@ -50,16 +50,20 @@ public class MyWidgetProvider extends AppWidgetProvider {
     private void updateWigetView(Context context, AppWidgetManager appWidgetManager, int appWidgetId, RemoteViews views, ArrayList<Place> places) {
 
         // Randomly select a restaurant
-        int random = new Random().nextInt(places.size() - 1);
-        String name = places.get(random).getName();
-        String address = places.get(random).getAddress();
-        String title = context.getString(R.string.restaurant_nearby);
+        if (places != null) {
 
-        views.setTextViewText(R.id.title_widget, title);
-        views.setTextViewText(R.id.name, name != null ? name : "");
-        views.setTextViewText(R.id.address, address != null ? address : "");
+            int random = new Random().nextInt(places.size() - 1);
+            String name = places.get(random).getName();
+            String address = places.get(random).getAddress();
+            String title = context.getString(R.string.restaurant_nearby);
 
-        appWidgetManager.updateAppWidget(appWidgetId, views);
+            views.setTextViewText(R.id.title_widget, title);
+            views.setTextViewText(R.id.name, name);
+            views.setTextViewText(R.id.address, address);
+
+            appWidgetManager.updateAppWidget(appWidgetId, views);
+
+        }
 
     }
 
@@ -72,8 +76,14 @@ public class MyWidgetProvider extends AppWidgetProvider {
                 PlaceHelper placeHelper = new PlaceHelper(Configuration.getApiKey());
                 GPSUtil gpsUtil = new GPSUtil(context);
 
-                return placeHelper.findPlaces(gpsUtil.getLastKnownLatitude(),
-                        gpsUtil.getLastKnownLongitude(), "restaurant", 50.0, false, null, null, context);
+                ArrayList<Place> places = null;
+
+                if (gpsUtil.getLastKnownLatitude() != null) {
+                    places = placeHelper.findPlaces(gpsUtil.getLastKnownLatitude(),
+                            gpsUtil.getLastKnownLongitude(), "restaurant", 50.0, false, null, null, context);
+                }
+
+                return places;
             }
 
             @Override

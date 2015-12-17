@@ -63,7 +63,7 @@ public class AlertDialogManager {
 		//Ensure this shows only once
 		SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(mContext).edit();
 		editor.putString("gpsAlert", "OFF");
-		editor.commit();
+		editor.apply();
 	}
 
 	public void showGPSWarningAlert(final Context mContext, ViewGroup root) {

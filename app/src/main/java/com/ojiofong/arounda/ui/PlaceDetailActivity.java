@@ -71,7 +71,7 @@ public class PlaceDetailActivity extends AppCompatActivity implements OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_single);
+        setContentView(R.layout.activity_place_detail);
         receiveIntents();
         initToolBar();
         initializeAndHide();

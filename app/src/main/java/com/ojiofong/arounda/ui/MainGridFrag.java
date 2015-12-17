@@ -4,17 +4,13 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-import android.widget.AdapterView;
-import android.widget.GridView;
 
 import com.ojiofong.arounda.R;
-import com.ojiofong.arounda.adapter.CarAdapter;
 import com.ojiofong.arounda.adapter.PopularPlacesAdapter;
 import com.ojiofong.arounda.data.PopularPlace;
 import com.ojiofong.arounda.data.RecyclerItemClickListener;
@@ -42,24 +38,6 @@ public class MainGridFrag extends Fragment {
         return rootView;
     }
 
-    private void populateGridView(final ArrayList<PopularPlace> myPopularPlaces) {
-
-        CarAdapter adapter = new CarAdapter(getActivity(), R.layout.single_item_grid, myPopularPlaces);
-
-        GridView gridView = (GridView) rootView.findViewById(R.id.gridView1);
-        gridView.setAdapter(adapter);
-
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View viewClicked, int position, long id) {
-
-                ((MainActivity) getActivity()).goToNextActivity(position);
-
-            }
-
-        });
-    }
 
     private void setUpRecyclerView(final ArrayList<PopularPlace> myPopularPlaces) {
         final RecyclerView mRecyclerView;
