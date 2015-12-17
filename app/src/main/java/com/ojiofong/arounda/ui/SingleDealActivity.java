@@ -155,10 +155,10 @@ public class SingleDealActivity extends ActionBarActivity implements OnClickList
 		ratingbar.setVisibility(View.GONE);
 
 		// Not using menu for now
-		menuHeader_tv = (TextView) findViewById(R.id.menuHeader);
-		menuInfo_tv = (TextView) findViewById(R.id.menuInfo);
-		menuHeader_tv.setVisibility(View.GONE);
-		menuInfo_tv.setVisibility(View.GONE);
+//		menuHeader_tv = (TextView) findViewById(R.id.menuHeader);
+//		menuInfo_tv = (TextView) findViewById(R.id.menuInfo);
+//		menuHeader_tv.setVisibility(View.GONE);
+//		menuInfo_tv.setVisibility(View.GONE);
 
 		// Opening Hours
 		openingHoursHeader_tv = (TextView) findViewById(R.id.openingHours1);

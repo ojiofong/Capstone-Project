@@ -134,8 +134,10 @@
     <string name="local_services">Local Services</string>
     <string name="shopping">Shopping</string>
     <string name="things_to_do">Things to do</string>
-    
-    
+
+    <!--added 12/16/2015-->
+
+    <string name="restaurant_nearby">Restaurant nearby</string>
 
     <!-- DEFAULT -->
 

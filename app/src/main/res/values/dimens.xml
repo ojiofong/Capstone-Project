@@ -70,5 +70,8 @@
     <dimen name="default_image_size">40dp</dimen>
 
 
+    <dimen name="widget_height">150dp</dimen>
+    <dimen name="widget_width">300dp</dimen>
+
 
 </resources>

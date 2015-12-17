@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <!-- FrameLayout is required for CardView to work witn ListView -->
+    <!-- FrameLayout is required for CardView to work within ListView -->
 
     <android.support.v7.widget.CardView
         style="@style/max_layout_width_style"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:id="@+id/card_item"
+        android:id="@+id/card_item_place_list"
         android:layout_marginBottom="@dimen/card_margin_top"
         android:layout_marginLeft="@dimen/key_line_1"
         android:layout_marginRight="@dimen/key_line_1"

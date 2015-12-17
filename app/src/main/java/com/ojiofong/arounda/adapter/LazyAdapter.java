@@ -76,7 +76,7 @@ public class LazyAdapter extends BaseAdapter {
             //	TextView placeLatitude = (TextView) convertView.findViewById(R.id.itemLat); // lat
             //	TextView placeLongitude = (TextView) convertView.findViewById(R.id.itemLong); // long
             holder.directionBtn = (ImageView) convertView.findViewById(id.direction); // direction
-            holder.cardView = (CardView) convertView.findViewById(id.card_item); // card view item
+            holder.cardView = (CardView) convertView.findViewById(id.card_item_place_list); // card view item
 
             //Setting default my custom font typeFace
             Typeface tf = Typeface.createFromAsset(context.getAssets(), "fonts/roboto_regular.ttf");
