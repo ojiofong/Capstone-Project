@@ -74,4 +74,8 @@
     <dimen name="widget_width">300dp</dimen>
 
 
+    <dimen name="mapfrag_endspace">35dp</dimen>
+    <dimen name="mapfrag_icon_size">60dp</dimen>
+
+
 </resources>

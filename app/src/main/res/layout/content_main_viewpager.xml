@@ -28,8 +28,8 @@
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
-        android:layout_marginRight="@dimen/key_line_1"
-        android:layout_marginLeft="@dimen/key_line_1"
+        android:layout_marginEnd="@dimen/key_line_1"
+        android:layout_marginStart="@dimen/key_line_1"
         android:maxWidth="@dimen/max_width_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

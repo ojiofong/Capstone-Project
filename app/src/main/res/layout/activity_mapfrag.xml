@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical" >
-    
-    
+    android:orientation="vertical">
+
+
     <!-- Include statusBar here for Kitkat only here -->
 
     <include layout="@layout/statusbar" />
@@ -16,29 +15,30 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
 
         <fragment
             android:id="@+id/map"
             android:name="com.google.android.gms.maps.MapFragment"
+            class="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            class="com.google.android.gms.maps.SupportMapFragment" />
+            android:layout_height="match_parent" />
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="10dp"
-            android:paddingRight="35dp" >
+            android:layout_marginBottom="@dimen/grid_spacing"
+            android:paddingStart="0dp"
+            android:paddingEnd="@dimen/mapfrag_endspace">
 
             <ImageView
                 android:id="@+id/map_car_iv"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="@dimen/mapfrag_icon_size"
+                android:layout_height="@dimen/mapfrag_icon_size"
                 android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
                 android:alpha="0.5"
                 android:clickable="true"
                 android:contentDescription="@string/content"
@@ -46,11 +46,11 @@
 
             <ImageView
                 android:id="@+id/map_transit_iv"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="@dimen/mapfrag_icon_size"
+                android:layout_height="@dimen/mapfrag_icon_size"
                 android:layout_alignBottom="@+id/map_car_iv"
                 android:layout_centerHorizontal="true"
-                android:layout_toRightOf="@+id/map_car_iv"
+                android:layout_toEndOf="@+id/map_car_iv"
                 android:alpha="0.5"
                 android:clickable="true"
                 android:contentDescription="@string/content"
@@ -58,11 +58,11 @@
 
             <ImageView
                 android:id="@+id/map_cyclist_iv"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="@dimen/mapfrag_icon_size"
+                android:layout_height="@dimen/mapfrag_icon_size"
                 android:layout_alignBottom="@+id/map_transit_iv"
                 android:layout_centerHorizontal="true"
-                android:layout_toRightOf="@+id/map_transit_iv"
+                android:layout_toEndOf="@+id/map_transit_iv"
                 android:alpha="0.5"
                 android:clickable="true"
                 android:contentDescription="@string/content"
@@ -70,11 +70,11 @@
 
             <ImageView
                 android:id="@+id/map_walking_iv"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="@dimen/mapfrag_icon_size"
+                android:layout_height="@dimen/mapfrag_icon_size"
                 android:layout_alignBottom="@+id/map_cyclist_iv"
                 android:layout_centerHorizontal="true"
-                android:layout_toRightOf="@+id/map_cyclist_iv"
+                android:layout_toEndOf="@+id/map_cyclist_iv"
                 android:alpha="0.5"
                 android:clickable="true"
                 android:contentDescription="@string/content"

@@ -12,8 +12,8 @@
         android:layout_gravity="center_horizontal"
         android:id="@+id/card_item_place_list"
         android:layout_marginBottom="@dimen/card_margin_top"
-        android:layout_marginLeft="@dimen/key_line_1"
-        android:layout_marginRight="@dimen/key_line_1"
+        android:layout_marginStart="@dimen/key_line_1"
+        android:layout_marginEnd="@dimen/key_line_1"
         android:clickable="true"
         android:elevation="@dimen/cardview_default_elevation"
         android:focusable="true"
@@ -23,8 +23,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="@dimen/view_spacing"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:paddingEnd="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/view_spacing">
 
             <!-- Place Name -->
